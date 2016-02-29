@@ -1,6 +1,6 @@
 <?php
 
-namespace Lembarek\{{packageName}}\Requests;
+namespace Lembarek\Admin\Requests;
 
 use Lembarek\Core\Requests\Request as MainRequest;
 

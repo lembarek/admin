@@ -1,6 +1,6 @@
 <?php
 
-namespace Lembarek\{{packageName}}\Controllers;
+namespace Lembarek\Admin\Controllers;
 
 use Lembarek\Core\Controllers\Controller as MainController;
 

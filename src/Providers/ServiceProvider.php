@@ -1,6 +1,6 @@
 <?php
 
-namespace Lembarek\{{packageName}}\Providers;
+namespace Lembarek\Admin\Providers;
 
 use Lembarek\Core\Providers\ServiceProvider as MainServiceProvider;
 
