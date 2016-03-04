@@ -2,8 +2,8 @@
 
 namespace Lembarek\Admin\Events;
 
-abstract class Event {
+abstract class Event
+{
 
-	//
-
+    //
 }
