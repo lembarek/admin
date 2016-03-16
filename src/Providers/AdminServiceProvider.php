@@ -14,6 +14,7 @@ class AdminServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->fullBoot('admin', __DIR__.'/../');
+        app('Lembarek\Admin\Kernel');
     }
 
     /**
