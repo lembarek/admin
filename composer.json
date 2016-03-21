@@ -1,6 +1,6 @@
 {
     "name": "lembarek/admin",
-    "description": "{{description}}",
+    "description": "the admin part  for laravel site, that handle users, and other admin stuff",
     "keywords": [
         "lembarek",
         "admin"

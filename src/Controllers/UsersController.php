@@ -22,7 +22,7 @@ class UsersController extends Controller
      */
     public function show_users()
     {
-        $users = $this->userRepo->all();
+        $users = $this->userRepo->allWith('profile');
         return view('admin::users.index', compact('users'));
     }
 }
