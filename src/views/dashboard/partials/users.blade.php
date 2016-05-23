@@ -1,8 +1,8 @@
 @inject('userRepo', 'Lembarek\Auth\Repositories\UserRepositoryInterface')
 
-{!! $userRepo->model()->paginate(22)->links() !!}
+{!! $userRepo->model()->paginate(config('admin.paginate'))->links() !!}
 
-@foreach($userRepo->model()->paginate(22) as $user)
+@foreach($userRepo->model()->paginate(config('admin.paginate')) as $user)
     <h1>{{ $user['username'] }}</h1>
 @endforeach
 
