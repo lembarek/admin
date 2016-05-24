@@ -1,14 +1,4 @@
 /*
- * Base structure
- */
-
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 50px;
-}
-
-
-/*
  * Global add-ons
  */
 
@@ -56,6 +46,12 @@ body {
   color: #fff;
   background-color: #428bca;
 }
+
+.nav-sidebar > .active > a:hover {
+  color: #fff;
+  background-color: #428bca;
+}
+
 
 
 /*
