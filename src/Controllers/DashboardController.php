@@ -2,12 +2,17 @@
 
 namespace Lembarek\Admin\Controllers;
 
+use Lembarek\Auth\Repositories\UserRepository;
+
 class DashboardController extends Controller
 {
 
 
-    public function __construct()
+    protected $userRepo;
+
+    public function __construct(UserRepository $userRepo)
     {
+        $this->userRepo = $userRepo;
     }
 
     /**
@@ -18,5 +23,17 @@ class DashboardController extends Controller
     public function index($page="dashboard")
     {
         return view('admin::dashboard.index', compact('page'));
+    }
+
+    /**
+     * show the profile of the user in dashboard
+     *
+     * @param  string  $username
+     * @return Response
+     */
+    public function profile($username)
+    {
+        $user = $this->userRepo->where(['username' => $username])->with('roles')->first();
+        return view('admin::dashboard.partials.profile', compact('user'));
     }
 }

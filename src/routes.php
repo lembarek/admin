@@ -13,4 +13,10 @@ Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'as' => 'admin::', 'm
             'uses' => 'UsersController@show_users',
             ]);
 
+
+        Route::get('/dashboard/profile/{username}', [
+            'as' => 'profile',
+            'uses' => 'DashboardController@profile',
+            ]);
+
 });
