@@ -31,6 +31,6 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'admin' => 'Lembarek\Admin\Middleware\Admin',
+        'AccessBackend' => 'Lembarek\Admin\Middleware\AccessBackend',
     ];
 }

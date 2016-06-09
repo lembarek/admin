@@ -1,7 +1,7 @@
 <?php
 
 
-Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'as' => 'admin::', 'middleware' => ['web','auth','admin']], function () {
+Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'as' => 'admin::', 'middleware' => ['web','auth','AccessBackend']], function () {
 
         Route::get('/dashboard/{page?}', [
             'as' => 'dashboard',

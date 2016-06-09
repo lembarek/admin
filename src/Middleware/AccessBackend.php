@@ -5,7 +5,7 @@ namespace Lembarek\Admin\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Admin
+class AccessBackend
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,11 @@ class Admin
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if(\Auth::check() && $request->user()->hasRole('admin'))
-            return $next($request);
+            $roles = $request->user()->roles()->get();
+            foreach($roles as $role){
+                if ( $role->hasPermission('access.backend') )
+                    return $next($request);
+            }
 
         return redirect('/');
     }
