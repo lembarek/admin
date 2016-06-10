@@ -10,7 +10,12 @@ Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'as' => 'admin::', 'm
 
         Route::get('/dashboard/profile/{username}', [
             'as' => 'profile',
-            'uses' => 'DashboardController@profile',
+            'uses' => 'UsersController@profile',
+            ]);
+
+        Route::delete('/dashboard/delete/{username}', [
+            'as' => 'delete-user',
+            'uses' => 'UsersController@delete',
             ]);
 
 });

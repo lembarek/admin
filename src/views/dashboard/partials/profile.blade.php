@@ -12,7 +12,14 @@
 
 
 @can('destory-user', $user)
-    <button>{{ trans('core::general.delete') }}</button>
+    <form action="{{ route('admin::delete-user', ['username' => $user->username]) }}" method="post">
+
+         {{ csrf_field() }}
+
+         {{ method_field('DELETE') }}
+
+        <button>{{ trans('core::general.delete') }}</button>
+    </form>
 @endcan
 
 @stop
