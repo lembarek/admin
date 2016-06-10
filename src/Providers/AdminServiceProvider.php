@@ -2,6 +2,10 @@
 
  namespace Lembarek\Admin\Providers;
 
+
+use Illuminate\Contracts\Auth\Access\Gate;
+use Lembarek\Auth\Models\User;
+
 class AdminServiceProvider extends ServiceProvider
 {
 
@@ -11,10 +15,15 @@ class AdminServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Gate $gate)
     {
         $this->fullBoot('admin', __DIR__.'/../');
         app('Lembarek\Admin\Kernel');
+
+        $gate->define('destory-user', function($loginUser,User $user){
+            return $loginUser->isSuperiorThen($user);
+        });
+
     }
 
     /**

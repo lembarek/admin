@@ -10,6 +10,10 @@
     <h2>{{ $role->name }}</h2>
 @endforeach
 
-<button>{{ trans('core::general.delete') }}</button>
+
+@can('destory-user', $user)
+    <button>{{ trans('core::general.delete') }}</button>
+@endcan
+
 @stop
 

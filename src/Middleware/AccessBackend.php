@@ -17,11 +17,11 @@ class AccessBackend
      */
     public function handle($request, Closure $next, $guard = null)
     {
-            $roles = $request->user()->roles()->get();
-            foreach($roles as $role){
-                if ( $role->hasPermission('access.backend') )
-                    return $next($request);
-            }
+        $roles = $request->user()->roles()->get();
+        foreach($roles as $role){
+            if ( $role->hasPermission('access-backend') )
+                return $next($request);
+        }
 
         return redirect('/');
     }
