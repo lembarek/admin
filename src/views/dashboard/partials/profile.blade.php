@@ -6,9 +6,11 @@
 
 @section('content')
 <h1>{{ $user->username }}</h1>
-@foreach($user->roles as $role)
-    <h2>{{ $role->name }}</h2>
-@endforeach
+@if(count($user->roles()))
+    @foreach($user->roles() as $role)
+        <h2>{{ $role->name }}</h2>
+    @endforeach
+@endif
 
 
 @can('destory-user', $user)
