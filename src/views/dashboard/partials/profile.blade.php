@@ -9,7 +9,15 @@
 
 @if(count($user->roles))
     @foreach($user->roles as $role)
-        <h2>{{ $role->name }}</h2>
+    <form action="{{ route('admin::delete-role', ['role' => $role->id])}}" method="post">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <input type="hidden" name="user" value="{{$user->id}}">
+            <h4>
+                {{ $role->name }}
+                <input type="submit"  value="X">
+            </h4>
+        </form>
     @endforeach
 @endif
 

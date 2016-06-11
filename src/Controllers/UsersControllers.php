@@ -65,4 +65,22 @@ class UsersController extends Controller
 
         return back();
     }
+
+    /**
+     * delete a role
+     *
+     * @param  Role  $role
+     * @return Response
+     */
+    public function deleteRole($role)
+    {
+        $input = request()->only('user');
+
+        $user = $this->userRepo->find($input['user']);
+
+        if(auth()->user()->canDeleteRole($user))
+            $user->roles()->detach($role);
+
+        return back();
+    }
 }

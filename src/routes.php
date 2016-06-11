@@ -24,4 +24,11 @@ Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'as' => 'admin::', 'm
             'uses' => 'UsersController@addRole',
             ]);
 
+
+        Route::delete('/dashboard/{role}/delete', [
+            'as' => 'delete-role',
+            'uses' => 'UsersController@deleteRole',
+            ]);
+
+
 });
