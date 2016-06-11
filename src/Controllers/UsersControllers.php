@@ -2,7 +2,8 @@
 
 namespace Lembarek\Admin\Controllers;
 
-use Lembarek\Auth\Repositories\UserRepository;
+use Lembarek\Auth\Repositories\UserRepositoryInterface;
+use Lembarek\Role\Repositories\RoleRepositoryInterface;
 
 class UsersController extends Controller
 {
@@ -10,9 +11,12 @@ class UsersController extends Controller
 
     protected $userRepo;
 
-    public function __construct(UserRepository $userRepo)
+    protected $roleRepo;
+
+    public function __construct(UserRepositoryInterface $userRepo, RoleRepositoryInterface $roleRepo)
     {
         $this->userRepo = $userRepo;
+        $this->roleRepo = $roleRepo;
     }
 
 
@@ -24,7 +28,7 @@ class UsersController extends Controller
      */
     public function profile($username)
     {
-        $user = $this->userRepo->where(['username' => $username])->with('roles')->first();
+        $user = $this->userRepo->byUsername($username, ['roles']);
         return view('admin::dashboard.partials.profile', compact('user'));
     }
 
@@ -44,5 +48,21 @@ class UsersController extends Controller
         return redirect()->route('admin::dashboard', ['page' => 'users']);
     }
 
+    /**
+     * add a role to a user
+     *
+     * @return Reponse
+     */
+    public function addRole()
+    {
+        $input = request()->only('role', 'user');
 
+        $role = $this->roleRepo->find($input['role']);
+
+        if(auth()->user()->canAddRole($role))
+
+            $this->userRepo->find($input['user'])->assignRole($role);
+
+        return back();
+    }
 }

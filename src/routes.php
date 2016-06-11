@@ -18,4 +18,10 @@ Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'as' => 'admin::', 'm
             'uses' => 'UsersController@delete',
             ]);
 
+
+        Route::post('/dashboard/addrole', [
+            'as' => 'add-role',
+            'uses' => 'UsersController@addRole',
+            ]);
+
 });
