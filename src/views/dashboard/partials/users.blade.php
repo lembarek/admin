@@ -4,6 +4,12 @@
 
 {!! $users->links() !!}
 
+<a
+    href="{{route('admin::create-user')}}"
+    class="btn btn-primary pull-right"
+>
+    {{trans('admin::dashboard.create-user')}}
+</a>
 <table class="table">
     <thead>
     <tr>

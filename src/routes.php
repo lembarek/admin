@@ -3,15 +3,23 @@
 
 Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'as' => 'admin::', 'middleware' => ['web','auth','AccessBackend']], function () {
 
-        Route::get('/dashboard/{page?}', [
-            'as' => 'dashboard',
-            'uses' => 'DashboardController@index',
-            ]);
-
         Route::get('/dashboard/profile/{username}', [
             'as' => 'profile',
             'uses' => 'UsersController@profile',
             ]);
+
+
+        Route::get('/dashboard/create-user', [
+            'as' => 'create-user',
+            'uses' => 'UsersController@createUser',
+            ]);
+
+
+        Route::post('/dashboard/create-user', [
+            'as' => 'create-user',
+            'uses' => 'UsersController@postCreateUser',
+            ]);
+
 
         Route::delete('/dashboard/delete/{username}', [
             'as' => 'delete-user',
@@ -29,6 +37,13 @@ Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'as' => 'admin::', 'm
             'as' => 'delete-role',
             'uses' => 'UsersController@deleteRole',
             ]);
+
+        Route::get('/dashboard/{page?}', [
+            'as' => 'dashboard',
+            'uses' => 'DashboardController@index',
+            ]);
+
+
 
 
 });

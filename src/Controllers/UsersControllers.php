@@ -2,6 +2,7 @@
 
 namespace Lembarek\Admin\Controllers;
 
+use Lembarek\Admin\Requests\CreateUserRequest;
 use Lembarek\Auth\Repositories\UserRepositoryInterface;
 use Lembarek\Role\Repositories\RoleRepositoryInterface;
 
@@ -45,6 +46,27 @@ class UsersController extends Controller
         if(auth()->user()->isSuperiorThen($user))
             $user->delete();
 
+        return redirect()->route('admin::dashboard', ['page' => 'users']);
+    }
+
+    /**
+     * create a new user
+     *
+     * @return Reponse
+     */
+    public function createUser()
+    {
+        return view('admin::dashboard.partials.createUser', ['page' => 'createUser']);
+    }
+
+    /**
+     * post create user
+     *
+     * @return Reponse
+     */
+    public function postCreateUser(CreateUserRequest $request)
+    {
+        $this->userRepo->create($request->all());
         return redirect()->route('admin::dashboard', ['page' => 'users']);
     }
 
