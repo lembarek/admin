@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('admin::create-user') }}" method="post">
+<form action="{{ route('admin::create-user') }}" method="post" class="form">
 {{ csrf_field() }}
 <input
     type="text"
