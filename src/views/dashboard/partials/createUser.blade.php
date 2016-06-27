@@ -8,21 +8,21 @@
     type="text"
     class="form-control"
     name="username"
-    placeholder={{ trans('core::general.username')}}
+    placeholder="{{ trans('core::general.username')}}"
     value="{{ old('username') }}"
 >
 <input
     type="email"
     class="form-control"
     name="email"
-    placeholder={{ trans('core::general.email')}}
+    placeholder="{{ trans('core::general.email')}}"
     value="{{ old('email') }}"
 >
 <input
     type="password"
     class="form-control"
     name="password"
-    placeholder={{ trans('core::general.password')}}
+    placeholder="{{ trans('core::general.password')}}"
     value="{{ old('password') }}"
 >
 

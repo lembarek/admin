@@ -1,49 +1,49 @@
 <?php
 
 
-Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'as' => 'admin::', 'middleware' => ['web','auth','AccessBackend']], function () {
+Route::group(['namespace' => 'Lembarek\Admin\Controllers', 'prefix' => 'dashboard',  'as' => 'admin::', 'middleware' => ['web','auth','AccessBackend']], function () {
 
-        Route::get('/dashboard/profile/{username}', [
+        Route::get('profile/{username}', [
             'as' => 'profile',
             'uses' => 'UsersController@profile',
             ]);
 
 
-        Route::get('/dashboard/create-user', [
+        Route::get('create-user', [
             'as' => 'create-user',
             'uses' => 'UsersController@createUser',
             ]);
 
 
-        Route::post('/dashboard/create-user', [
+        Route::post('create-user', [
             'as' => 'create-user',
             'uses' => 'UsersController@postCreateUser',
             ]);
 
 
-        Route::delete('/dashboard/delete/{username}', [
+        Route::delete('delete/{username}', [
             'as' => 'delete-user',
             'uses' => 'UsersController@delete',
             ]);
 
 
-        Route::post('/dashboard/addrole', [
+        Route::post('addrole', [
             'as' => 'add-role',
             'uses' => 'UsersController@addRole',
             ]);
 
 
-        Route::delete('/dashboard/{role}/delete', [
+        Route::delete('{role}/delete', [
             'as' => 'delete-role',
             'uses' => 'UsersController@deleteRole',
             ]);
 
-        Route::get('/dashboard/{page?}', [
+        Route::resource('tags', 'TagsController');
+
+        Route::get('{page?}', [
             'as' => 'dashboard',
             'uses' => 'DashboardController@index',
             ]);
-
-
 
 
 });
