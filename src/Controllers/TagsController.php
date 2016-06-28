@@ -66,6 +66,8 @@ class TagsController extends Controller
     */
     public function edit($id)
     {
+        $tag = $this->tagRepo->find($id);
+        return view('admin::tags.edit', compact('tag'));
     }
 
     /**
@@ -75,8 +77,11 @@ class TagsController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $id)
+    public function update(CreateTagRequest $request, $id)
     {
+        $tag = $this->tagRepo->find($id);
+        $tag->update($request->all());
+        return back();
     }
 
     /**
