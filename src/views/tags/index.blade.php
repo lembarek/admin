@@ -17,11 +17,12 @@
         <tr>
             <th>{{ trans('blog::tag.name') }}</th>
             <th>{{ trans('blog::tag.title') }}</th>
-            <th>{{ trans('blog::tag.subtitle') }}</th>
-            <th>{{ trans('blog::tag.page_image') }}</th>
-            <th>{{ trans('blog::tag.mega_description') }}</th>
-            <th>{{ trans('blog::tag.layout') }}</th>
-            <th>{{ trans('blog::tag.direction') }}</th>
+            <th class="hidden-sm">{{ trans('blog::tag.subtitle') }}</th>
+            <th class="hidden-md">{{ trans('blog::tag.page_image') }}</th>
+            <th class="hidden-md">{{ trans('blog::tag.mega_description') }}</th>
+            <th class="hidden-md">{{ trans('blog::tag.layout') }}</th>
+            <th class="hidden-sm">{{ trans('blog::tag.direction') }}</th>
+            <th>{{ trans('admin::tag.action') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +40,12 @@
                 @else
                   Normal
                 @endif
+              </td>
+              <td>
+                  <a href="{{ route('admin::dashboard.tags.edit', ['tags' => $tag->id]) }}">
+                      <span class="glyphicon glyphicon-pencil" ></span>
+                  </a>
+                  @include('admin::tags.partials.delete')
               </td>
             </tr>
         @endforeach
