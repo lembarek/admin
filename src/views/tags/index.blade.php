@@ -17,6 +17,13 @@
         <tr>
             <th>
                 <a
+                    href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'id', $direction) }}">
+                    {{ trans('admin::tag.id') }}
+                </a>
+            </th>
+
+            <th>
+                <a
                     href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'name', $direction) }}">
                     {{ trans('blog::tag.name') }}
                 </a>
@@ -57,8 +64,8 @@
                     {{ trans('blog::tag.direction') }}
                 </a>
             </th>
-            <th><a href="route('admin::dashboard.tags.index')">
-                <a
+            <th>
+                <a>
                     {{ trans('admin::tag.action') }}
                 </a>
             </th>
@@ -67,6 +74,7 @@
     <tbody>
         @foreach($tags as $tag)
             <tr>
+              <td>{{ $tag->id}}</td>
               <td>{{ $tag->name}}</td>
               <td>{{ $tag->title }}</td>
               <td class="hidden-sm">{{ $tag->subtitle }}</td>
