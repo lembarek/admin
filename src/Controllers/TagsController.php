@@ -22,8 +22,9 @@ class TagsController extends Controller
     */
     public function index()
     {
-        $tags = $this->tagRepo->paginate();
-        return view('admin::tags.index', compact('tags'));
+        $direction = request()->get('direction');
+        $tags = $this->tagRepo->getPaginatedAndOrdered();
+        return view('admin::tags.index', compact('tags', 'direction'));
     }
 
     /**
