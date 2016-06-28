@@ -45,18 +45,24 @@
     placeholder={{ trans('core::general.layout')}}
     value="{{ old('layout') }}"
 >
-<label for="direction">{{ trans('admin::tag.normal') }}</label>
+<label class="checkbox-inline" for="direction">
 <input
     type="radio"
     name="direction"
     value="1"
+    checked="checked"
 >
-<label for="direction">{{ trans('admin::tag.reverse') }}</label>
+{{ trans('admin::tag.normal') }}
+</label>
+
+<label class="checkbox-inline for="direction">
 <input
     type="radio"
     name="direction"
     value="0"
 >
+{{ trans('admin::tag.reverse') }}
+</label>
 
 <button
     class="btn btn-lg btn-primary btn-block"
