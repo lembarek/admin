@@ -35,7 +35,7 @@
 @endif
 
 @can('destory-user', $user)
-    <form action="{{ route('admin::delete-user', ['username' => $user->username]) }}" method="post">
+    <form action="{{ route('admin::dashboard.users.destroy', ['username' => $user->username]) }}" method="post">
 
          {{ csrf_field() }}
 

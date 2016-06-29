@@ -8,8 +8,6 @@ use Lembarek\Role\Repositories\RoleRepositoryInterface;
 
 class UsersController extends Controller
 {
-
-
     protected $userRepo;
 
     protected $roleRepo;
@@ -20,6 +18,16 @@ class UsersController extends Controller
         $this->roleRepo = $roleRepo;
     }
 
+    /**
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function index()
+    {
+        $users = $this->userRepo->getPaginatedAndOrdered();
+        return view('admin::users.index', compact('users'));
+    }
 
     /**
      * show the profile of the user in dashboard
@@ -27,12 +35,11 @@ class UsersController extends Controller
      * @param  string  $username
      * @return Response
      */
-    public function profile($username)
+    public function show($username)
     {
         $user = $this->userRepo->byUsername($username, ['roles']);
-        return view('admin::dashboard.partials.profile', compact('user'));
+        return view('admin::users.show', compact('user'));
     }
-
 
     /**
      * detele a user
@@ -40,13 +47,13 @@ class UsersController extends Controller
      * @param  string  $username
      * @return Response
      */
-    public function delete($username)
+    public function destroy($username)
     {
         $user = $this->userRepo->byUsername($username);
         if(auth()->user()->isSuperiorThen($user))
             $user->delete();
 
-        return redirect()->route('admin::dashboard', ['page' => 'users']);
+        return redirect()->route('admin::dashboard.users.index');
     }
 
     /**
@@ -54,9 +61,9 @@ class UsersController extends Controller
      *
      * @return Reponse
      */
-    public function createUser()
+    public function create()
     {
-        return view('admin::dashboard.partials.createUser', ['page' => 'createUser']);
+        return view('admin::users.create');
     }
 
     /**
@@ -64,10 +71,10 @@ class UsersController extends Controller
      *
      * @return Reponse
      */
-    public function postCreateUser(CreateUserRequest $request)
+    public function store(CreateUserRequest $request)
     {
         $this->userRepo->create($request->all());
-        return redirect()->route('admin::dashboard', ['page' => 'users']);
+        return redirect()->route('admin::dashboard.users.index');
     }
 
     /**

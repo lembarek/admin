@@ -5,6 +5,7 @@ namespace Lembarek\Admin\Controllers;
 use App\Http\Requests;
 use Lembarek\Blog\Repositories\TagRepositoryInterface;
 use Lembarek\Admin\Requests\CreateTagRequest;
+use Lembarek\Admin\Requests\UpdateTagRequest;
 
 class TagsController extends Controller
 {
@@ -81,7 +82,7 @@ class TagsController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(CreateTagRequest $request, $id)
+    public function update(UpdateTagRequest $request, $id)
     {
         $tag = $this->tagRepo->find($id);
         $tag->update($request->all());

@@ -1,11 +1,10 @@
-@inject('userRepo', 'Lembarek\Auth\Repositories\UserRepositoryInterface')
+@extends('admin::layout.master')
 
-<?php $users = $userRepo->model()->with('roles')->paginate(config('admin.paginate')) ?>
-
-{!! $users->links() !!}
+@section('content')
+ {!! $users->links() !!}
 
 <a
-    href="{{route('admin::create-user')}}"
+    href="{{route('admin::dashboard.users.create')}}"
     class="btn btn-primary pull-right"
 >
     {{trans('admin::dashboard.create-user')}}
@@ -20,7 +19,7 @@
     @foreach($users as $user)
     <tbody>
     <tr>
-        <td><a href="{{ route('admin::profile', ['username' => $user['username']]) }}">{{ $user['username'] }}</a></td>
+        <td><a href="{{ route('admin::dashboard.users.show', ['username' => $user['username']]) }}">{{ $user['username'] }}</a></td>
         <td>
             @foreach($user->roles as $role)
                 {{ $role->name }}
@@ -32,4 +31,6 @@
 </table>
 
 {!! $users->links() !!}
+
+@stop
 
