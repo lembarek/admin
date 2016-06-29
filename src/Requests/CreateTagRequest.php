@@ -22,7 +22,7 @@ class CreateTagRequest extends Request
     public function rules()
     {
     return [
-        'name' => 'required',
+        'name' => 'required|unique:tags,name',
         'title' => 'string',
         'subtitle' => 'string',
         "page_image" => "string",
