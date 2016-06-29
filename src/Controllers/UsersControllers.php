@@ -3,6 +3,7 @@
 namespace Lembarek\Admin\Controllers;
 
 use Lembarek\Admin\Requests\CreateUserRequest;
+use Lembarek\Admin\Requests\UpdateUserRequest;
 use Lembarek\Auth\Repositories\UserRepositoryInterface;
 use Lembarek\Role\Repositories\RoleRepositoryInterface;
 
@@ -75,6 +76,30 @@ class UsersController extends Controller
     {
         $this->userRepo->create($request->all());
         return redirect()->route('admin::dashboard.users.index');
+    }
+
+    /**
+     * edit the users profile
+     *
+     * @param  string  $username
+     * @return Response
+     */
+    public function edit($username)
+    {
+        $user = $this->userRepo->byUsername($username);
+        return view('admin::users.edit', compact('user'));
+    }
+
+    /**
+     * update existing user
+     *
+     * @param  string  $username
+     * @return Response
+     */
+    public function update(UpdateUserRequest $request, $username)
+    {
+        $this->userRepo->byUsername($username)->profile()->update($request->except('_token', '_method'));;
+        return back();
     }
 
     /**

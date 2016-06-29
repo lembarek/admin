@@ -9,4 +9,5 @@ return [
     "sex" => "sex",
     "birth_date" => "birth_date",
     "roles" => "roles",
+    "update" => "update",
     ];
