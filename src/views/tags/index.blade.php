@@ -49,7 +49,7 @@
             <th class="hidden-md">
                 <a
                     href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'meta_description', $direction) }}">
-                    {{ trans('blog::tag.mega_description') }}
+                    {{ trans('blog::tag.meta_description') }}
                 </a>
             </th>
             <th class="hidden-md">

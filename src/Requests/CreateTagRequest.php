@@ -26,7 +26,7 @@ class CreateTagRequest extends Request
         'title' => 'string',
         'subtitle' => 'string',
         "page_image" => "string",
-        "mega_description" => "string",
+        "meta_description" => "string",
         "layout" => "string",
         "direction" => "string",
     ];
