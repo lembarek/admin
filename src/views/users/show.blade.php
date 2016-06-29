@@ -5,9 +5,36 @@
 @stop
 
 @section('content')
-<h1>{{ $user->username }}</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>{{ trans('admin::users.key') }}</th>
+            <th>{{ trans('admin::users.value') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>{{ trans("admin::users.username")}}</td>
+                <td>{{ $user->username}}</td>
+            </tr>
+            <tr>
+                <td>{{ trans("admin::users.email") }}</td>
+                <td>{{ $user->email }}</td>
+            </tr>
+
+            @foreach($user->profile->toArray() as $key => $value)
+                <tr>
+                    <td>{{ trans("admin::users.$key")}}</td>
+                    <td>{{ $value }}</td>
+                </tr>
+            @endforeach
+
+    </tbody>
+</table>
 
 @if(count($user->roles))
+    <h1>{{ trans('admin::users.roles') }}</h1>
     @foreach($user->roles as $role)
     <form action="{{ route('admin::delete-role', ['role' => $role->id])}}" method="post">
                 {{ csrf_field() }}
