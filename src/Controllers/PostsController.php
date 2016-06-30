@@ -3,6 +3,7 @@
 namespace Lembarek\Admin\Controllers;
 
 use App\Http\Requests;
+use Lembarek\Admin\Requests\UpdatePostRequest;
 use Lembarek\Blog\Repositories\PostRepositoryInterface;
 
 class PostsController extends Controller
@@ -63,17 +64,22 @@ class PostsController extends Controller
     */
     public function edit($id)
     {
+        $post = $this->postRepo->find($id);
+        return view('admin::posts.edit', compact('post'));
     }
 
     /**
     * Update the specified resource in storage.
     *
-    * @param  \Illuminate\Http\Request  $request
+    * @param  UpdatePostRequest  $request
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $id)
+    public function update(UpdatePostRequest $request, $id)
     {
+        $post = $this->postRepo->find($id);
+        $post->update($request->except('_method', '_token'));
+        return back();
     }
 
     /**
