@@ -9,4 +9,5 @@ return [
     "text" => "text",
     "create" => "Create Post",
     "post_created" => "post has been created successfully",
+    "preview" => "preview",
 ];

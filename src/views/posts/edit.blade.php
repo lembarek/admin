@@ -7,6 +7,7 @@
 
     <div class="col-md-9 ">
         <button type="submit" class="btn btn-danger pull-right">{{ trans('admin::posts.delete') }}</button>
+        <a href="{{ route('admin::dashboard.posts.show', ['slug' => $post->slug])  }}" class="btn btn-warning pull-right">{{ trans('admin::posts.preview') }}</a>
     </div>
 </form>
 
