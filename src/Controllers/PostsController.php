@@ -3,6 +3,7 @@
 namespace Lembarek\Admin\Controllers;
 
 use App\Http\Requests;
+use Lembarek\Admin\Requests\CreatePostRequest;
 use Lembarek\Admin\Requests\UpdatePostRequest;
 use Lembarek\Blog\Repositories\PostRepositoryInterface;
 
@@ -34,16 +35,19 @@ class PostsController extends Controller
     */
     public function create()
     {
+        return view('admin::posts.create');
     }
 
     /**
     * Store a newly created resource in storage.
     *
-    * @param  \Illuminate\Http\Request  $request
+    * @param  CreatePostRequest  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
+        $this->postRepo->create($request->except('_token'));
+        return redirect(route('admin::dashboard.posts.index'))->with(['flash.message' => trans('admin::posts.post_created')]);
     }
 
     /**
@@ -90,5 +94,8 @@ class PostsController extends Controller
     */
     public function destroy($id)
     {
+        $post = $this->postRepo->find($id);
+        $post->delete();
+        return redirect(route('admin::dashboard.posts.index'))->with('flash.message', trans('admin::posts.post_deleted'));;
     }
 }

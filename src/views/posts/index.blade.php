@@ -2,11 +2,13 @@
 
 @section('content')
 
+<ul>
 @foreach($posts as $post)
-
-    <h2>{{ $post['title'] }}</h2>
-
+<li>
+    <a href="{{route('admin::dashboard.posts.edit', ['id' => $post->id])}}">{{ $post['title'] }}</a>
+</li>
 @endforeach
 
+</ul>
 @stop
 

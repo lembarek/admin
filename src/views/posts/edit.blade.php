@@ -1,6 +1,15 @@
 @extends('admin::layout.master')
 
 @section('content')
+<form action="{{ route('admin::dashboard.posts.destroy', ['id' => $post->id]) }}" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+    <div class="col-md-9 ">
+        <button type="submit" class="btn btn-danger pull-right">{{ trans('admin::posts.delete') }}</button>
+    </div>
+</form>
+
 <form action="{{ route('admin::dashboard.posts.update', ['id' => $post->id]) }}" method="post">
     <input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
