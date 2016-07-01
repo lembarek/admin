@@ -2,9 +2,9 @@
 
 namespace Lembarek\Admin\Controllers;
 
-use App\Http\Requests;
+use Lembarek\Admin\Requests\CreateRoleRequest;
 use Lembarek\Auth\Repositories\UserRepositoryInterface;
-use Lembarek\Roles\Repositories/RoleRepositoryInterface;
+use Lembarek\Role\Repositories\RoleRepositoryInterface;
 
 class RolesController extends Controller
 {
@@ -13,7 +13,7 @@ class RolesController extends Controller
 
     protected $roleRepo;
 
-    public function __construct(UserRepositoryInterface $userRepo, Repositories/RoleRepositoryInterface $roleRepo)
+    public function __construct(UserRepositoryInterface $userRepo, RoleRepositoryInterface $roleRepo)
     {
         $this->userRepo = $userRepo;
         $this->roleRepo = $roleRepo;
@@ -44,7 +44,7 @@ class RolesController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request)
+    public function store(CreateRoleRequest $request)
     {
         $input = request()->only('role', 'user');
 
@@ -104,6 +104,5 @@ class RolesController extends Controller
             $user->roles()->detach($role);
 
         return back();
-
     }
 }
