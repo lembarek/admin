@@ -101,40 +101,4 @@ class UsersController extends Controller
         $this->userRepo->byUsername($username)->profile()->update($request->except('_token', '_method'));;
         return back();
     }
-
-    /**
-     * add a role to a user
-     *
-     * @return Reponse
-     */
-    public function addRole()
-    {
-        $input = request()->only('role', 'user');
-
-        $role = $this->roleRepo->find($input['role']);
-
-        if(auth()->user()->canAddRole($role))
-
-            $this->userRepo->find($input['user'])->assignRole($role);
-
-        return back();
-    }
-
-    /**
-     * delete a role
-     *
-     * @param  Role  $role
-     * @return Response
-     */
-    public function deleteRole($role)
-    {
-        $input = request()->only('user');
-
-        $user = $this->userRepo->find($input['user']);
-
-        if(auth()->user()->canDeleteRole($user))
-            $user->roles()->detach($role);
-
-        return back();
-    }
 }

@@ -36,7 +36,7 @@
 @if(count($user->roles))
     <h1>{{ trans('admin::users.roles') }}</h1>
     @foreach($user->roles as $role)
-    <form action="{{ route('admin::delete-role', ['role' => $role->id])}}" method="post">
+    <form action="{{ route('admin::dashboard.roles.delete', ['role' => $role->id]) }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                 <input type="hidden" name="user" value="{{$user->id}}">
@@ -49,7 +49,7 @@
 @endif
 
 @if(count(auth()->user()->getRolesFor($user)))
-    <form action="{{ route('admin::add-role') }}" method="post">
+    <form action="{{ route('admin::dashboard.roles.create') }}" method="post">
          {{ csrf_field() }}
         <select name="role" >
             @foreach(auth()->user()->getRolesFor($user) as $role)
