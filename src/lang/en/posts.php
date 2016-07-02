@@ -13,4 +13,5 @@ return [
     "active" => "active",
     "publish" => "publish",
     "suspend" => "suspend",
+    "new_post" => "New Post",
 ];
