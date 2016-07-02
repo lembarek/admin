@@ -4,7 +4,6 @@ namespace Lembarek\Admin\Requests;
 
 class UpdatePostRequest extends Request
 {
-
     /**
     * Determine if the user is authorized to make this request.
     *
@@ -28,6 +27,5 @@ class UpdatePostRequest extends Request
         'text' => 'string',
     ];
     }
-
 
 }

@@ -10,4 +10,7 @@ return [
     "create" => "Create Post",
     "post_created" => "post has been created successfully",
     "preview" => "preview",
+    "active" => "active",
+    "publish" => "publish",
+    "suspend" => "suspend",
 ];
