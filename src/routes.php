@@ -9,6 +9,16 @@ Route::group([
 ],
     function () {
 
+        Route::delete('/users/{user}/roles/{role}', [
+            'as' => 'roles.users.destroy',
+            'uses' => 'RoleUserController@destroy',
+        ]);
+
+        Route::post('/users/{user}', [
+            'as' => 'roles.users.store',
+            'uses' => 'RoleUserController@store',
+            ]);
+
         Route::resource('roles', 'RolesController');
         Route::resource('posts', 'PostsController');
         Route::resource('users', 'UsersController');
@@ -18,6 +28,4 @@ Route::group([
             'as' => 'dashboard',
             'uses' => 'DashboardController@index',
             ]);
-
-
 });

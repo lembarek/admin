@@ -3,19 +3,15 @@
 namespace Lembarek\Admin\Controllers;
 
 use Lembarek\Admin\Requests\CreateRoleRequest;
-use Lembarek\Auth\Repositories\UserRepositoryInterface;
 use Lembarek\Role\Repositories\RoleRepositoryInterface;
 
 class RolesController extends Controller
 {
 
-    protected $userRepo;
-
     protected $roleRepo;
 
-    public function __construct(UserRepositoryInterface $userRepo, RoleRepositoryInterface $roleRepo)
+    public function __construct(RoleRepositoryInterface $roleRepo)
     {
-        $this->userRepo = $userRepo;
         $this->roleRepo = $roleRepo;
     }
 
@@ -37,6 +33,7 @@ class RolesController extends Controller
     */
     public function create()
     {
+        return view('admin::roles.create');
     }
 
     /**
@@ -47,15 +44,9 @@ class RolesController extends Controller
     */
     public function store(CreateRoleRequest $request)
     {
-        $input = request()->only('role', 'user');
+        $this->roleRepo->create($request->except('_token'));
 
-        $role = $this->roleRepo->find($input['role']);
-
-        if(auth()->user()->canAddRole($role))
-
-            $this->userRepo->find($input['user'])->assignRole($role);
-
-        return back();
+        return back()->with('flash.message', trans('admin::roles.role_created'));
     }
 
     /**
@@ -97,13 +88,7 @@ class RolesController extends Controller
     */
     public function destroy($role)
     {
-        $input = request()->only('user');
-
-        $user = $this->userRepo->find($input['user']);
-
-        if(auth()->user()->canDeleteRole($user))
-            $user->roles()->detach($role);
-
-        return back();
+        $this->roleRepo->find($role)->delete();
+        return back()->with('flash.message', trans('admin::roles.role_deleted'));;
     }
 }
