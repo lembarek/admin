@@ -3,6 +3,7 @@
 namespace Lembarek\Admin\Controllers;
 
 use Lembarek\Admin\Requests\CreateRoleRequest;
+use Lembarek\Admin\Requests\UpdateRoleRequest;
 use Lembarek\Role\Repositories\RoleRepositoryInterface;
 
 class RolesController extends Controller
@@ -67,6 +68,8 @@ class RolesController extends Controller
     */
     public function edit($id)
     {
+        $role = $this->roleRepo->find($id);
+        return view('admin::roles.edit', compact('role'));
     }
 
     /**
@@ -76,8 +79,11 @@ class RolesController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $id)
+    public function update(UpdateRoleRequest $request, $id)
     {
+        $role = $this->roleRepo->find($id);
+        $role->update($request->except('_token', '_method'));
+        return back()->with('flash.message', trans('admin::roles.role_updated'));
     }
 
     /**

@@ -18,7 +18,11 @@
     <tbody>
         @foreach($roles as $role)
             <tr>
-                <td>{{ $role->name }}</td>
+                <td><a
+                        href="{{ route('admin::dashboard.roles.edit', ['id' => $role->id]) }}">
+                        {{ $role->name }}
+                    </a>
+                </td>
                 <td>{{ $role->order}}</td>
             </tr>
         @endforeach

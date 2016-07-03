@@ -6,4 +6,5 @@ return [
     "new_role" => "New Role",
     "create_role" => "Create Role",
     "role_created" => "role created successfully",
+    "role_updated" => "role has updated successfully",
 ];
