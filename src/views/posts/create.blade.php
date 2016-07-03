@@ -55,6 +55,6 @@
         </div>
     </div>
 @else
-    <p>{{ trans('admin::posts.can_not_create_user') }}</p>
+    <p>{{ trans('admin::posts.can_not_create_posts') }}</p>
 @endcan
 @stop

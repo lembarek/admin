@@ -1,6 +1,7 @@
 @extends('admin::layout.master')
 
 @section('content')
+@can('update-posts');
 <div class="col-md-9">
 
 <form action="{{ route('admin::dashboard.posts.update', ['id' => $post->id]) }}" method="post">
@@ -49,5 +50,8 @@
 <a href="{{ route('admin::dashboard.posts.show', ['slug' => $post->slug])  }}" class="btn btn-warning">{{ trans('admin::posts.preview') }}</a>
 </div>
 </div>
+@else
+    <p>{{ trans('admin::can_not_update_posts') }}</p>
+@endcan
 
 @stop

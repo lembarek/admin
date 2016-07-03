@@ -25,6 +25,10 @@ class AdminServiceProvider extends ServiceProvider
         $gate->define('create-posts', function(User $user){
             return $user->hasPermission('create-posts');
         });
+
+        $gate->define('update-posts', function(User $user){
+            return $user->hasPermission('update-posts');
+        });
     }
 
     /**

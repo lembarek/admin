@@ -86,11 +86,16 @@ class PostsController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(UpdatePostRequest $request, $id)
+    public function update(UpdatePostRequest $request, $id, Gate $gate)
     {
-        $post = $this->postRepo->find($id);
-        $post->update($request->except('_method', '_token'));
-        return back();
+        if($gate->allows('update-posts')){
+            $post = $this->postRepo->find($id);
+            $post->update($request->except('_method', '_token'));
+            return back()->with('flash.message', 'admin::posts.posts_updated');
+        }else{
+            return back()->with('flash.message', 'admin::posts.can_not_update_posts');
+        }
+
     }
 
     /**
