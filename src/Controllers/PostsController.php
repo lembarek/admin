@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Lembarek\Admin\Requests\CreatePostRequest;
 use Lembarek\Admin\Requests\UpdatePostRequest;
 use Lembarek\Blog\Repositories\PostRepositoryInterface;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 class PostsController extends Controller
 {
@@ -44,10 +45,14 @@ class PostsController extends Controller
     * @param  CreatePostRequest  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(CreatePostRequest $request)
+    public function store(CreatePostRequest $request, Gate $gate)
     {
-        $this->postRepo->create($request->except('_token'));
-        return redirect(route('admin::dashboard.posts.index'))->with(['flash.message' => trans('admin::posts.post_created')]);
+        if($gate->allows('create-posts')){
+            $this->postRepo->create($request->except('_token'));
+            return redirect(route('admin::dashboard.posts.index'))->with(['flash.message' => trans('admin::posts.post_created')]);
+        }else{
+            return redirect(route('admin::dashboard.posts.index'))->with(['flash.message' => trans('admin::posts.can_not_create_post')]);
+        }
     }
 
     /**
