@@ -8,8 +8,6 @@ use Lembarek\Auth\Models\User;
 
 class AdminServiceProvider extends ServiceProvider
 {
-
-
     /**
      * Perform post-registration booting of services.
      *
@@ -24,6 +22,9 @@ class AdminServiceProvider extends ServiceProvider
             return $loginUser->isSuperiorThen($user);
         });
 
+        $gate->define('create-posts', function(User $user){
+            return $user->hasPermission('create-posts');
+        });
     }
 
     /**
