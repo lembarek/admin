@@ -34,11 +34,14 @@
 
 <div class="col-md-3">
 <div class="btn-group">
+
+@can('delete-posts')
 <form action="{{ route('admin::dashboard.posts.destroy', ['id' => $post->id]) }}" method="post">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <button type="submit" class="btn btn-danger">{{ trans('admin::posts.delete') }}</button>
 </form>
+@endif
 
 <form action="{{ route('admin::dashboard.posts.update', ['id' => $post->id]) }}" method="post">
     <input type="hidden" name="_method" value="PUT">

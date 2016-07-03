@@ -104,10 +104,12 @@ class PostsController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function destroy($id)
+    public function destroy($id, Gate $gate)
     {
-        $post = $this->postRepo->find($id);
-        $post->delete();
-        return redirect(route('admin::dashboard.posts.index'))->with('flash.message', trans('admin::posts.post_deleted'));;
+        if($gate->allows('delete-posts')){
+            $post = $this->postRepo->find($id);
+            $post->delete();
+            return redirect(route('admin::dashboard.posts.index'))->with('flash.message', trans('admin::posts.post_deleted'));;
+        }
     }
 }
