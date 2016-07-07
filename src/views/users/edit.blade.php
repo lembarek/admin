@@ -4,6 +4,7 @@
 
 @section('content')
 
+        @can('edit-users')
         <div class="col-md-6 col-md-push-2">
         <h1>{{ $user->username }} </h1>
         <form action="{{ route('admin::dashboard.users.update', ['username' => $user->username]) }}" method="post">
@@ -23,4 +24,7 @@
             <button type="submit" class="btn btn-primary pull-right">{{ trans('admin::users.update') }}</button>
        </form>
         </div>
+        @else
+            <p> {{ trans('admin::users.can_not_edit_users') }}</p>
+        @endcan
 @stop

@@ -103,9 +103,14 @@ class UsersController extends Controller
      * @param  string  $username
      * @return Response
      */
-    public function update(UpdateUserRequest $request, $username)
+    public function update(UpdateUserRequest $request,Gate $gate,  $username)
     {
-        $this->userRepo->byUsername($username)->profile()->update($request->except('_token', '_method'));;
-        return back();
+        if($gate->allows('edit-users')){
+            $this->userRepo->byUsername($username)->profile()->update($request->except('_token', '_method'));;
+            return back();
+        }
+        return redirect()
+            ->route('admin::dashboard')
+            ->with('flash.message', trans('admin::users.can_not_create_user'));
     }
 }
