@@ -3,12 +3,14 @@
 @section('content')
  {!! $users->links() !!}
 
+@can('create-users')
 <a
     href="{{route('admin::dashboard.users.create')}}"
     class="btn btn-primary pull-right"
 >
     {{trans('admin::dashboard.create-user')}}
 </a>
+@endcan
 <table class="table">
     <thead>
     <tr>

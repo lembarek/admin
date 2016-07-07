@@ -1,7 +1,7 @@
 @extends('admin::layout.master')
 
 @section('content')
-
+@can('create-users')
 <form action="{{ route('admin::dashboard.users.store') }}" method="post" class="form">
 {{ csrf_field() }}
 <input
@@ -32,5 +32,10 @@
 </button>
 
 </form>
+@else
+
+<p> {{ trans('admin::users.can_not_create_users') }}</p>
+
+@endcan
 
 @stop

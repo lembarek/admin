@@ -4,6 +4,7 @@ namespace Lembarek\Admin\Controllers;
 
 use Lembarek\Admin\Requests\CreateUserRequest;
 use Lembarek\Admin\Requests\UpdateUserRequest;
+use Illuminate\Contracts\Auth\Access\Gate;
 use Lembarek\Auth\Repositories\UserRepositoryInterface;
 use Lembarek\Role\Repositories\RoleRepositoryInterface;
 
@@ -72,10 +73,16 @@ class UsersController extends Controller
      *
      * @return Reponse
      */
-    public function store(CreateUserRequest $request)
+    public function store(CreateUserRequest $request, Gate $gate)
     {
-        $this->userRepo->create($request->all());
-        return redirect()->route('admin::dashboard.users.index');
+       if($gate->allows('create-users')){
+            $this->userRepo->create($request->all());
+            return redirect()->route('admin::dashboard.users.index');
+        }
+
+       return redirect()
+              ->route('admin::dashboard')
+              ->with('flash.message', trans('admin::users.can_not_create_user'));
     }
 
     /**

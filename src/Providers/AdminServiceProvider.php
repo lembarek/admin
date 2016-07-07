@@ -33,6 +33,10 @@ class AdminServiceProvider extends ServiceProvider
         $gate->define('delete-posts', function(User $user){
             return $user->hasPermission('delete-posts');
         });
+
+        $gate->define('create-users', function(User $user){
+            return $user->hasPermission('create-users');
+        });
     }
 
     /**
