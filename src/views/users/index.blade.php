@@ -21,7 +21,11 @@
     @foreach($users as $user)
     <tbody>
     <tr>
+        @can('read-users')
         <td><a href="{{ route('admin::dashboard.users.show', ['username' => $user['username']]) }}">{{ $user['username'] }}</a></td>
+        @else
+        <td>{{ $user['username'] }}</td>
+        @endcan
         <td>
             @foreach($user->roles as $role)
                 {{ $role->name }}

@@ -6,6 +6,7 @@
 
 @section('content')
 
+@can('read-users')
 <table class="table">
     <thead>
         <tr>
@@ -69,6 +70,9 @@
 
         <button>{{ trans('core::general.delete') }}</button>
     </form>
+@endcan
+@else
+<p>{{ trans('admin::users.can_not_read_users') }}</p>
 @endcan
 
 @stop
