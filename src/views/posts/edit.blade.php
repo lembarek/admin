@@ -1,7 +1,7 @@
 @extends('admin::layout.master')
 
 @section('content')
-@can('update-posts');
+@can('edit-posts');
 <div class="col-md-9">
 
 <form action="{{ route('admin::dashboard.posts.update', ['id' => $post->id]) }}" method="post">
@@ -35,7 +35,7 @@
 <div class="col-md-3">
 <div class="btn-group">
 
-@can('delete-posts')
+@can('destroy-posts')
 <form action="{{ route('admin::dashboard.posts.destroy', ['id' => $post->id]) }}" method="post">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">

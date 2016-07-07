@@ -14,7 +14,7 @@
 <ul>
 @foreach($posts as $post)
 <li>
-    @can('update-posts')
+    @can('edit-posts')
         <a href="{{route('admin::dashboard.posts.edit', ['id' => $post->id])}}">{{ $post['title'] }}</a>
     @else
         <a href="#">{{ $post['title'] }}</a>

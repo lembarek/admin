@@ -88,7 +88,7 @@ class PostsController extends Controller
     */
     public function update(UpdatePostRequest $request, $id, Gate $gate)
     {
-        if($gate->allows('update-posts')){
+        if($gate->allows('edit-posts')){
             $post = $this->postRepo->find($id);
             $post->update($request->except('_method', '_token'));
             return back()->with('flash.message', 'admin::posts.posts_updated');
@@ -106,7 +106,7 @@ class PostsController extends Controller
     */
     public function destroy($id, Gate $gate)
     {
-        if($gate->allows('delete-posts')){
+        if($gate->allows('destroy-posts')){
             $post = $this->postRepo->find($id);
             $post->delete();
             return redirect(route('admin::dashboard.posts.index'))->with('flash.message', trans('admin::posts.post_deleted'));;
