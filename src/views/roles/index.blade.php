@@ -2,12 +2,15 @@
 
 @section('content')
 @can('read-roles')
+
+@can('create-roles')
 <a
     href="{{route('admin::dashboard.roles.create')}}"
     class="btn btn-primary pull-right"
 >
     {{trans('admin::roles.new_role')}}
 </a>
+ @endcan
 
 <table class="table">
     <thead>

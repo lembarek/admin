@@ -44,11 +44,12 @@ class RolesController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(CreateRoleRequest $request)
+    public function store(CreateRoleRequest $request, Gate $gate)
     {
-        $this->roleRepo->create($request->except('_token'));
-
-        return back()->with('flash.message', trans('admin::roles.role_created'));
+        if($gate->allows('create-roles')){
+            $this->roleRepo->create($request->except('_token'));
+            return back()->with('flash.message', trans('admin::roles.role_created'));
+        }
     }
 
     /**
