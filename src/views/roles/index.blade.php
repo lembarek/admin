@@ -1,6 +1,7 @@
 @extends('admin::layout.master')
 
 @section('content')
+@can('read-roles')
 <a
     href="{{route('admin::dashboard.roles.create')}}"
     class="btn btn-primary pull-right"
@@ -28,4 +29,7 @@
         @endforeach
     </tbody>
 </table>
-    @stop
+@else
+    {{ trans('admin::roles.can_not_read_roles') }}
+@endcan
+@stop
