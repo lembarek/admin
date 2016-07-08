@@ -5,6 +5,7 @@ namespace Lembarek\Admin\Controllers;
 use Lembarek\Admin\Requests\CreateRoleRequest;
 use Lembarek\Admin\Requests\UpdateRoleRequest;
 use Lembarek\Role\Repositories\RoleRepositoryInterface;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 class RolesController extends Controller
 {
@@ -92,9 +93,11 @@ class RolesController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function destroy($role)
+    public function destroy($role, Gate $gate)
     {
-        $this->roleRepo->find($role)->delete();
-        return back()->with('flash.message', trans('admin::roles.role_deleted'));;
+        if($gate->allows('destroy-roles')){
+            $this->roleRepo->find($role)->delete();
+            return back()->with('flash.message', trans('admin::roles.role_deleted'));;
+        }
     }
 }

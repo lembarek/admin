@@ -14,6 +14,7 @@
         <tr>
             <th>{{ trans('admin::roles.name') }}</th>
             <th>{{ trans('admin::roles.order') }}</th>
+            <th>{{ trans('admin::roles.action') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,11 @@
                     </a>
                 </td>
                 <td>{{ $role->order}}</td>
+                <td>
+                    @can('destroy-roles')
+                        @include('admin::roles.partials.delete')
+                    @endcan
+                </td>
             </tr>
         @endforeach
     </tbody>
