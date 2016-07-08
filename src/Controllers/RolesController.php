@@ -81,11 +81,13 @@ class RolesController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(UpdateRoleRequest $request, $id)
+    public function update(UpdateRoleRequest $request,Gate $gate, $id)
     {
-        $role = $this->roleRepo->find($id);
-        $role->update($request->except('_token', '_method'));
-        return back()->with('flash.message', trans('admin::roles.role_updated'));
+        if($gate->allows('edit-roles')){
+            $role = $this->roleRepo->find($id);
+            $role->update($request->except('_token', '_method'));
+            return back()->with('flash.message', trans('admin::roles.role_updated'));
+        }
     }
 
     /**

@@ -23,10 +23,15 @@
     <tbody>
         @foreach($roles as $role)
             <tr>
-                <td><a
+                <td>
+                    @can('edit-roles')
+                    <a
                         href="{{ route('admin::dashboard.roles.edit', ['id' => $role->id]) }}">
                         {{ $role->name }}
                     </a>
+                    @else
+                        {{ $role->name }}
+                    @endcan
                 </td>
                 <td>{{ $role->order}}</td>
                 <td>
