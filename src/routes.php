@@ -23,6 +23,7 @@ Route::group([
         Route::resource('posts', 'PostsController');
         Route::resource('users', 'UsersController');
         Route::resource('tags', 'TagsController');
+        Route::resource('categories', 'CategoriesController');
 
         Route::get('{page?}', [
             'as' => 'dashboard',
