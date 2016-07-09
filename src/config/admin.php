@@ -2,12 +2,13 @@
 
 return [
     "links" => [
-        ["/dashboard","home"],
-        ["/dashboard/users","users"],
-        ["/dashboard/posts","posts"],
-        ["/dashboard/roles","roles"],
-        ["/dashboard/tags","tags"],
-        ["/dashboard/categories","categories"],
+        ["admin::dashboard", '', "home"],
+        ["admin::dashboard.users.index", '', "users"],
+        ["admin::dashboard.posts.index", '', "posts"],
+        ["admin::dashboard.roles.index", '', "roles"],
+        ["admin::dashboard.tags.index", '', "tags"],
+        ["admin::dashboard.categories.index", '', "categories"],
+        ["admin::dashboard.users.show", '["username" => $user->username]', "settings"],
     ],
 
     'paginate' => 22,
