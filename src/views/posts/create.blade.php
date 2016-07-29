@@ -27,27 +27,27 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ trans('admin::posts.text')}}</label>
+                                <label class="col-md-4 control-label">{{ trans('admin::posts.text') }}</label>
                                 <div class="col-md-6">
                                     <textarea class="form-control" name="body">{{ old('body') }}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ trans('published_at')}}</label>
+                                <label class="col-md-4 control-label">{{ trans('published_at') }}</label>
                                 <div class="col-md-6">
                                 <input type="date" class="form-control" name="published_at" value="{{ old('published_at') }}">
                                 </div>
                             </div>
 
-
-                        <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ trans('admin::posts.create') }}
-                                    </button>
-                                </div>
+                            <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ trans('admin::posts.create') }}
+                                        </button>
+                                    </div>
                             </div>
+
                         </form>
                     </div>
                 </div>

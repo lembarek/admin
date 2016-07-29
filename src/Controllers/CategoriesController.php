@@ -3,7 +3,7 @@
 namespace Lembarek\Admin\Controllers;
 
 use App\Http\Requests;
-use Lembarek\Core\Repositories\CategoryRepositoryInterface;
+use Lembarek\Blog\Repositories\CategoryRepositoryInterface;
 use Lembarek\Admin\Requests\CreateCategoryRequest;
 use Lembarek\Admin\Requests\UpdateCategoryRequest;
 
