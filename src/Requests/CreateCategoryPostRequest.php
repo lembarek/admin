@@ -2,8 +2,9 @@
 
 namespace Lembarek\Admin\Requests;
 
-class CreateRoleRequest extends Request
+class CreateCategoryPostRequest extends Request
 {
+
     /**
     * Determine if the user is authorized to make this request.
     *
@@ -11,7 +12,7 @@ class CreateRoleRequest extends Request
     */
     public function authorize()
     {
-    return true;
+        return true;
     }
 
     /**
@@ -21,9 +22,11 @@ class CreateRoleRequest extends Request
     */
     public function rules()
     {
-    return [
-        'user' => 'required',
-    ];
+        return [
+            'category_id' => 'required',
+            'post_id' => 'required',
+        ];
     }
+
 
 }

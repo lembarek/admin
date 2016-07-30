@@ -19,6 +19,11 @@ Route::group([
             'uses' => 'RoleUserController@store',
             ]);
 
+        Route::get('/categories', [
+            'as' => 'categories.posts.store',
+            'uses' => 'CategoryPostController@store',
+            ]);
+
         Route::resource('roles', 'RolesController');
         Route::resource('posts', 'PostsController');
         Route::resource('users', 'UsersController');

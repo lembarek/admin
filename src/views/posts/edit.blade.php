@@ -30,6 +30,20 @@
     </div>
 </form>
 
+<h1>{{ trans('admin::blog.categories') }}</h1>
+@foreach($categories as $category)
+<form action="{{ route('admin::categories.posts.store') }}" method="post">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+            <input type="hidden" name="category_id" value="{{$category->id}}">
+            <input type="hidden" name="post_id" value="{{$post->id}}">
+        <h4>
+            {{ $category->name }}
+            <input type="submit"  value="{{trans('admin::blog.add')}}">
+        </h4>
+    </form>
+@endforeach
+
 </div>
 
 <div class="col-md-3">

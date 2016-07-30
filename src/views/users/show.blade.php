@@ -52,6 +52,7 @@
 @if(count(auth()->user()->getRolesFor($user)))
     <form action="{{ route('admin::roles.users.store', $user->id) }}" method="post">
          {{ csrf_field() }}
+         <input type="hidden" name="user" value="{{$user->id}}">
         <select name="role" >
             @foreach(auth()->user()->getRolesFor($user) as $role)
                 <option value="{{$role->id}}">{{$role->name}}</option>
