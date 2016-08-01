@@ -19,9 +19,14 @@ Route::group([
             'uses' => 'RoleUserController@store',
             ]);
 
-        Route::get('/categories', [
-            'as' => 'categories.posts.store',
+        Route::post('/categories/attach_post_to_category', [
+            'as' => 'categories_posts.store',
             'uses' => 'CategoryPostController@store',
+            ]);
+
+        Route::delete('/categories/detach_post_from_category', [
+            'as' => 'categories_posts.destroy',
+            'uses' => 'CategoryPostController@destroy',
             ]);
 
         Route::resource('roles', 'RolesController');

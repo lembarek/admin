@@ -2,7 +2,7 @@
 
 namespace Lembarek\Admin\Requests;
 
-class CreateCategoryPostRequest extends Request
+class DestroyCategoryPostRequest extends Request
 {
 
     /**
@@ -12,7 +12,7 @@ class CreateCategoryPostRequest extends Request
     */
     public function authorize()
     {
-        return true;
+    return true;
     }
 
     /**
