@@ -98,7 +98,7 @@ class TagsController extends Controller
     public function destroy($id)
     {
         $this->tagRepo->find($id)->delete();
-        return back();
+        return "success";
     }
 }
 
