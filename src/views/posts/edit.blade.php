@@ -9,19 +9,19 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="form-group">
-        <div class="col-md-8">
+        <div class="col-md-9">
         <input type="text" class="form-control" name="title" value="{{ $post['title'] }}">
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-md-8">
-            <textarea class="form-control" name="description"> {{ $post['description'] }}</textarea>
+        <div class="col-md-9">
+            <textarea rows=10 class="form-control" name="description"> {{ $post['description'] }}</textarea>
         </div>
     </div>
-<div class="form-group">
-        <div class="col-md-8">
-            <textarea class="form-control" name="body">{{ $post['body'] }}</textarea>
+    <div class="form-group">
+        <div class="col-md-9">
+            <textarea rows=20  class="form-control" name="body">{{ $post['body'] }}</textarea>
         </div>
     </div>
 
@@ -30,7 +30,6 @@
     </div>
 </form>
 
-@include('admin::posts.partials.categories')
 </div>
 
 <div class="col-md-3">
@@ -53,6 +52,8 @@
 
 <a href="{{ route('admin::dashboard.posts.show', ['slug' => $post->slug])  }}" class="btn btn-warning">{{ trans('admin::posts.preview') }}</a>
 </div>
+
+@include('admin::posts.partials.categories')
 </div>
 @else
     <p>{{ trans('admin::can_not_update_posts') }}</p>
