@@ -16,12 +16,12 @@
 
     <div class="form-group">
         <div class="col-md-9">
-            <textarea rows=10 class="form-control" name="description"> {{ $post['description'] }}</textarea>
+            <textarea rows=5  class="form-control" name="description"> {{ $post['description'] }}</textarea>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-9">
-            <textarea rows=20  class="form-control" name="body">{{ $post['body'] }}</textarea>
+            <textarea class="editor" name="body">{{ $post['body'] }}</textarea>
         </div>
     </div>
 
@@ -59,4 +59,16 @@
     <p>{{ trans('admin::can_not_update_posts') }}</p>
 @endcan
 
+
+@stop
+
+@section('head_script')
+
+<script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+tinyMCE.init({
+    selector: ".editor",
+});
+</script>
 @stop

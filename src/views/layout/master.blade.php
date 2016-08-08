@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
         @include('admin::layout.partials.head')
+
+        @yield('head_script')
  </head>
 
  <body>
