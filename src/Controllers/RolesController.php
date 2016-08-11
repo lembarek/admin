@@ -100,7 +100,8 @@ class RolesController extends Controller
     {
         if($gate->allows('destroy-roles')){
             $this->roleRepo->find($role)->delete();
-            return back()->with('flash.message', trans('admin::roles.role_deleted'));;
+            return true;
         }
+        return false;
     }
 }
