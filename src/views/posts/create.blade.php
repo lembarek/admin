@@ -2,59 +2,59 @@
 
 @section('content')
 @can('create-posts')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{ trans('admin::posts.create') }}</div>
-                    <div class="panel-body">
-                        @include('core::partials.errors')
-                        <form class="form-horizontal" role="form" method="POST" action="{{route('admin::dashboard.posts.store')}}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <div class="col-md-9">
+        @include('core::partials.errors')
+        <form class="form-horizontal" role="form" method="POST" action="{{route('admin::dashboard.posts.store')}}">
 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">{{ trans('admin::posts.title') }}</label>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="title" value="{{ old('title') }}">
-                                </div>
-                            </div>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">{{ trans('admin::posts.description') }}</label>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="description" value="{{ old('description') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">{{ trans('admin::posts.text') }}</label>
-                                <div class="col-md-6">
-                                    <textarea class="form-control" name="body">{{ old('body') }}</textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">{{ trans('published_at') }}</label>
-                                <div class="col-md-6">
-                                <input type="date" class="form-control" name="published_at" value="{{ old('published_at') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ trans('admin::posts.create') }}
-                                        </button>
-                                    </div>
-                            </div>
-
-                        </form>
-                    </div>
+            <div class="form-group">
+                <div class="col-md-9">
+                <label class="control-label">{{ trans('admin::posts.title') }}</label>
+                <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                 </div>
             </div>
-        </div>
-    </div>
+
+            <div class="form-group">
+                <div class="col-md-9">
+                    <label class="control-label">{{ trans('admin::posts.description') }}</label>
+                    <textarea rows=5  class="form-control" name="description"> {{ old('description') }}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-9">
+                    <label class="control-label">{{ trans('admin::posts.body') }}</label>
+                    <textarea class="editor" name="body">{{ old('body') }}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6">
+                 <label class="control-label">{{ trans('admin::posts.published_at') }}</label>
+                 <input type="date" class="form-control" name="published_at" value="{{ old('published_at') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            {{ trans('admin::posts.create') }}
+                        </button>
+                    </div>
+            </div>
+        </form>
 @else
     <p>{{ trans('admin::posts.can_not_create_posts') }}</p>
 @endcan
+@stop
+
+@section('head_script')
+
+<script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+tinyMCE.init({
+    selector: ".editor",
+});
+</script>
 @stop

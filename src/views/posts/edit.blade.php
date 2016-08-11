@@ -4,23 +4,26 @@
 @can('edit-posts')
 <div class="col-md-9">
 
-<form action="{{ route('admin::dashboard.posts.update', ['id' => $post->id]) }}" method="post">
+<form action="{{ route('admin::dashboard.posts.update', ['id' => $post->id]) }}" role="form" class="form-horizontal"  method="post">
     <input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="form-group">
         <div class="col-md-9">
-        <input type="text" class="form-control" name="title" value="{{ $post['title'] }}">
+         <label class="control-label">{{ trans('admin::posts.title') }}</label>
+         <input type="text" class="form-control" name="title" value="{{ $post['title'] }}">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-9">
+            <label class="control-label">{{ trans('admin::posts.description') }}</label>
             <textarea rows=5  class="form-control" name="description"> {{ $post['description'] }}</textarea>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-9">
+            <label class="control-label">{{ trans('admin::posts.body') }}</label>
             <textarea class="editor" name="body">{{ $post['body'] }}</textarea>
         </div>
     </div>

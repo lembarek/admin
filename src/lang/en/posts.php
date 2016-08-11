@@ -14,4 +14,5 @@ return [
     "publish" => "publish",
     "suspend" => "suspend",
     "new_post" => "New Post",
+    "published_at" => "published at",
 ];
