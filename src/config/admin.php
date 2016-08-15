@@ -2,7 +2,7 @@
 
 return [
     "links" => [
-        ["admin::dashboard", '', "home"],
+        ["admin::dashboard", '', "dashboard"],
         ["admin::dashboard.users.index", '', "users"],
         ["admin::dashboard.posts.index", '', "posts"],
         ["admin::dashboard.roles.index", '', "roles"],
