@@ -2,7 +2,7 @@
 
 namespace Lembarek\Admin\Controllers;
 
-use Lembarek\Admin\Requests\CreateRoleRequest;
+use Lembarek\Admin\Requests\CreateRoleUserRequest;
 use Lembarek\Auth\Repositories\UserRepositoryInterface;
 use Lembarek\Role\Repositories\RoleRepositoryInterface;
 
@@ -25,7 +25,7 @@ class RoleUserController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(CreateRoleRequest $request)
+    public function store(CreateRoleUserRequest $request)
     {
         $input = request()->only('role', 'user');
 

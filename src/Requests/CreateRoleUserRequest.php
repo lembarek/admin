@@ -2,8 +2,9 @@
 
 namespace Lembarek\Admin\Requests;
 
-class CreateRoleRequest extends Request
+class CreateRoleUserRequest extends Request
 {
+
     /**
     * Determine if the user is authorized to make this request.
     *
@@ -22,9 +23,10 @@ class CreateRoleRequest extends Request
     public function rules()
     {
     return [
-        'name' => 'required',
-        'order' => 'required',
+        'role' => 'required',
+        'user' => 'required',
     ];
     }
+
 
 }
