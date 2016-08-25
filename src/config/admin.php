@@ -8,6 +8,7 @@ return [
         ["admin::dashboard.roles.index", '', "roles"],
         ["admin::dashboard.tags.index", '', "tags"],
         ["admin::dashboard.categories.index", '', "categories"],
+        ["uploadManager::upload.manager", '', "upload Manager"],
         ["admin::dashboard.users.show", '["username" => auth()->user()->username]', "settings"],
     ],
 
