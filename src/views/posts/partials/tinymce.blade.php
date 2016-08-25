@@ -3,7 +3,7 @@
 <script language="javascript" type="text/javascript">
 tinyMCE.init({
     selector: ".editor",
-    plugins: "image",
+    plugins: "image, code, autoresize",
     image_list: [
         @foreach($images as $image)
         {title: "{{$image['name']}}", value: "{{$image['webPath']}}" },
