@@ -25,6 +25,8 @@ class AdminServiceProvider extends ServiceProvider
             return $loginUser->isSuperiorThen($user);
         });
 
+        view()->composer('admin::posts.partials.tinymce', 'Lembarek\Admin\ViewComposers\TinyMceComposer');
+
     }
 
     /**

@@ -66,12 +66,5 @@
 @stop
 
 @section('head_script')
-
-<script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
-
-<script language="javascript" type="text/javascript">
-tinyMCE.init({
-    selector: ".editor",
-});
-</script>
+@include('admin::posts.partials.tinymce')
 @stop
