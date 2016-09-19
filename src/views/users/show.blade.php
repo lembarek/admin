@@ -24,12 +24,14 @@
                 <td>{{ $user->email }}</td>
             </tr>
 
+            @if(count($user->profile))
             @foreach($user->profile->toArray() as $key => $value)
                 <tr>
                     <td>{{ trans("admin::users.$key")}}</td>
                     <td>{{ $value }}</td>
                 </tr>
             @endforeach
+            @endif
 
     </tbody>
 </table>

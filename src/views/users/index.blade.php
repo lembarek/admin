@@ -11,16 +11,37 @@
     {{trans('admin::dashboard.create-user')}}
 </a>
 @endcan
+
+    {!! $users->appends(['orderby' => $orderby, 'direction' => $direction])->links() !!}
+
 <table class="table">
     <thead>
     <tr>
-        <th>{{ trans('admin::dashboard.username') }}</th>
-        <th>{{ trans('admin::dashboard.role') }}</th>
+
+        <th>
+            <a
+                href="{{ routeWithOrderBy('admin::dashboard.users.index', 'id', $direction) }}">
+                {{ trans('admin::users.id') }}
+            </a>
+        </th>
+
+        <th>
+            <a
+                href="{{ routeWithOrderBy('admin::dashboard.users.index', 'username', $direction) }}">
+                {{ trans('admin::users.username') }}
+            </a>
+        </th>
+
+        <th>
+                {{ trans('admin::users.role') }}
+        </th>
+
     </tr>
     </thead>
     @foreach($users as $user)
     <tbody>
     <tr>
+        <td>{{ $user->id}}</td>
         @can('read-users')
         <td><a href="{{ route('admin::dashboard.users.show', ['username' => $user['username']]) }}">{{ $user['username'] }}</a></td>
         @else
@@ -35,8 +56,6 @@
     </tbody>
     @endforeach
 </table>
-
-{!! $users->links() !!}
-
+{!! $users->appends(['orderby' => $orderby, 'direction' => $direction])->links() !!}
 @stop
 

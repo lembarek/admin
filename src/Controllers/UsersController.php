@@ -27,8 +27,11 @@ class UsersController extends Controller
     */
     public function index()
     {
+        $direction = request()->get('direction');
+        $orderby = request()->get('orderby');
+
         $users = $this->userRepo->getPaginatedAndOrdered();
-        return view('admin::users.index', compact('users'));
+        return view('admin::users.index', compact('users', 'orderby', 'direction'));
     }
 
     /**
