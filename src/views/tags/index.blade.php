@@ -10,7 +10,7 @@
     {{trans('blog::tag.new_tag')}}
 </a>
 
-    {!! $tags->appends(['orderby' => $orderby, 'direction' => $direction])->links() !!}
+{!! $tags->appends(['orderby' => $orderby, 'direction' => $direction])->links() !!}
 
 <table class="table table-striped table-bordered">
     <thead>

@@ -25,8 +25,11 @@ class PostsController extends Controller
     */
     public function index()
     {
+        $direction = request()->get('direction');
+        $orderby = request()->get('orderby');
+
         $posts = $this->postRepo->getPaginatedAndOrdered();
-        return view('admin::posts.index', compact('posts'));
+        return view('admin::posts.index', compact('posts', 'direction', 'orderby'));
     }
 
     /**

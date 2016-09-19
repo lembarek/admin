@@ -15,4 +15,7 @@ return [
     "suspend" => "suspend",
     "new_post" => "New Post",
     "published_at" => "published at",
+    "author" => "author",
+    "can_not_create_posts" => "can not create posts",
+    "id" => "id",
 ];
