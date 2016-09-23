@@ -16,7 +16,7 @@ return [
     "can_not_read_users" => "can not read users",
     "id" => "id",
     "role" => "role",
-    "email")" => "email")",
-    "$key")" => "$key")",
-    "username")" => "username")",
+    "email" => "email",
+    "key" => "key",
+    "username" => "username",
 ];
