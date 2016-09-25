@@ -17,5 +17,5 @@ return [
     "key" => "key",
     "value" => "value",
     "new_tag" => "new tag",
-    "$key")" => "$key")",
+    "key" => "key",
 ];
