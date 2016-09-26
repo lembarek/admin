@@ -5,10 +5,10 @@
 
 @can('create-users')
 <a
-    href="{{route('admin::dashboard.users.create')}}"
+    href="{{route('admin::users.create')}}"
     class="btn btn-primary pull-right"
 >
-    {{trans('admin::dashboard.create-user')}}
+    {{trans('admin::create-user')}}
 </a>
 @endcan
 
@@ -20,14 +20,14 @@
 
         <th>
             <a
-                href="{{ routeWithOrderBy('admin::dashboard.users.index', 'id', $direction) }}">
+                href="{{ routeWithOrderBy('admin::users.index', 'id', $direction) }}">
                 {{ trans('admin::users.id') }}
             </a>
         </th>
 
         <th>
             <a
-                href="{{ routeWithOrderBy('admin::dashboard.users.index', 'username', $direction) }}">
+                href="{{ routeWithOrderBy('admin::users.index', 'username', $direction) }}">
                 {{ trans('admin::users.username') }}
             </a>
         </th>
@@ -43,7 +43,7 @@
     <tr>
         <td>{{ $user->id}}</td>
         @can('read-users')
-        <td><a href="{{ route('admin::dashboard.users.show', ['username' => $user['username']]) }}">{{ $user['username'] }}</a></td>
+        <td><a href="{{ route('admin::users.show', ['username' => $user['username']]) }}">{{ $user['username'] }}</a></td>
         @else
         <td>{{ $user['username'] }}</td>
         @endcan

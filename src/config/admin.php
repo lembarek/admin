@@ -2,14 +2,14 @@
 
 return [
     "links" => [
-        ["admin::dashboard", '', "dashboard"],
-        ["admin::dashboard.users.index", '', "users"],
-        ["admin::dashboard.posts.index", '', "posts"],
-        ["admin::dashboard.roles.index", '', "roles"],
-        ["admin::dashboard.tags.index", '', "tags"],
-        ["admin::dashboard.categories.index", '', "categories"],
+        ["admin::, '', "dashboard"],
+        ["admin::users.index", '', "users"],
+        ["admin::posts.index", '', "posts"],
+        ["admin::roles.index", '', "roles"],
+        ["admin::tags.index", '', "tags"],
+        ["admin::categories.index", '', "categories"],
         ["uploadManager::upload.manager", '', "upload Manager"],
-        ["admin::dashboard.users.show", '["username" => auth()->user()->username]', "settings"],
+        ["admin::users.show", '["username" => auth()->user()->username]', "settings"],
     ],
 
     'paginate' => 22,

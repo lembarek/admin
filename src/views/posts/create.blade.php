@@ -4,7 +4,7 @@
 @can('create-posts')
     <div class="col-md-9">
         @include('core::partials.errors')
-        <form class="form-horizontal" role="form" method="POST" action="{{route('admin::dashboard.posts.store')}}">
+        <form class="form-horizontal" role="form" method="POST" action="{{route('admin::posts.store')}}">
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

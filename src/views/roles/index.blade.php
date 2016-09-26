@@ -5,7 +5,7 @@
 
 @can('create-roles')
 <a
-    href="{{route('admin::dashboard.roles.create')}}"
+    href="{{route('admin::roles.create')}}"
     class="btn btn-primary pull-right"
 >
     {{trans('admin::roles.new_role')}}
@@ -26,7 +26,7 @@
                 <td>
                     @can('edit-roles')
                     <a
-                        href="{{ route('admin::dashboard.roles.edit', ['id' => $role->id]) }}">
+                        href="{{ route('admin::roles.edit', ['id' => $role->id]) }}">
                         {{ $role->name }}
                     </a>
                     @else

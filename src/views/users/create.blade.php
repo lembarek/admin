@@ -2,7 +2,7 @@
 
 @section('content')
 @can('create-users')
-<form action="{{ route('admin::dashboard.users.store') }}" method="post" class="form">
+<form action="{{ route('admin::users.store') }}" method="post" class="form">
 {{ csrf_field() }}
 <input
     type="text"
@@ -28,7 +28,7 @@
 
 <button
     class="btn btn-lg btn-primary btn-block"
-    type="submit">{{ trans('admin::dashboard.create-user') }}
+    type="submit">{{ trans('admin::create-user') }}
 </button>
 
 </form>

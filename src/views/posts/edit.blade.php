@@ -4,7 +4,7 @@
 @can('edit-posts')
 <div class="col-md-9">
 
-<form action="{{ route('admin::dashboard.posts.update', ['id' => $post->id]) }}" role="form" class="form-horizontal"  method="post">
+<form action="{{ route('admin::posts.update', ['id' => $post->id]) }}" role="form" class="form-horizontal"  method="post">
     <input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -39,21 +39,21 @@
 <div class="btn-group">
 
 @can('destroy-posts')
-<form action="{{ route('admin::dashboard.posts.destroy', ['id' => $post->id]) }}" method="post">
+<form action="{{ route('admin::posts.destroy', ['id' => $post->id]) }}" method="post">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <button type="submit" class="btn btn-danger">{{ trans('admin::posts.delete') }}</button>
 </form>
 @endif
 
-<form action="{{ route('admin::dashboard.posts.update', ['id' => $post->id]) }}" method="post">
+<form action="{{ route('admin::posts.update', ['id' => $post->id]) }}" method="post">
     <input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" value="{{ ! $post['active'] }}" name="active">
     <button type="submit" class="btn btn-primary">{{ $post['active'] ? trans('admin::posts.suspend'): trans('admin::posts.publish') }}</button>
 </form>
 
-<a href="{{ route('admin::dashboard.posts.show', ['slug' => $post->slug])  }}" class="btn btn-warning">{{ trans('admin::posts.preview') }}</a>
+<a href="{{ route('admin::posts.show', ['slug' => $post->slug])  }}" class="btn btn-warning">{{ trans('admin::posts.preview') }}</a>
 </div>
 
 @include('admin::posts.partials.categories')

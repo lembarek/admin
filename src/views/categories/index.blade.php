@@ -4,7 +4,7 @@
 
 
 <a
-    href="{{route('admin::dashboard.categories.create')}}"
+    href="{{route('admin::categories.create')}}"
     class="btn btn-primary pull-right"
 >
     {{trans('blog::category.new_category')}}
@@ -17,20 +17,20 @@
         <tr>
             <th>
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.categories.index', 'id', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::categories.index', 'id', $direction) }}">
                     {{ trans('admin::category.id') }}
                 </a>
             </th>
 
             <th>
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.categories.index', 'name', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::categories.index', 'name', $direction) }}">
                     {{ trans('blog::category.name') }}
                 </a>
             </th>
             <th class="hidden-md">
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.categories.index', 'description', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::categories.index', 'description', $direction) }}">
                     {{ trans('blog::category.description') }}
                 </a>
             </th>
@@ -46,7 +46,7 @@
             <tr>
                 <td>
                     <a
-                        href="{{ route('admin::dashboard.categories.edit', ['id' => $category->id]) }}"
+                        href="{{ route('admin::categories.edit', ['id' => $category->id]) }}"
                     >
                         {{ $category->id}}
                     </a>
@@ -54,7 +54,7 @@
               <td>{{ $category->name}}</td>
               <td class="hidden-md">{{ $category->description }}</td>
               <td>
-                  <a href="{{ route('admin::dashboard.categories.edit', ['categories' => $category->id]) }}">
+                  <a href="{{ route('admin::categories.edit', ['categories' => $category->id]) }}">
                       <span class="glyphicon glyphicon-pencil" ></span>
                   </a>
                   @include('admin::categories.partials.delete')

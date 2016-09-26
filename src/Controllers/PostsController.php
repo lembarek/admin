@@ -52,9 +52,9 @@ class PostsController extends Controller
     {
         if($gate->allows('create-posts')){
             $this->postRepo->create($request->except('_token'));
-            return redirect(route('admin::dashboard.posts.index'))->with(['flash.message' => trans('admin::posts.post_created')]);
+            return redirect(route('admin::posts.index'))->with(['flash.message' => trans('admin::posts.post_created')]);
         }else{
-            return redirect(route('admin::dashboard.posts.index'))->with(['flash.message' => trans('admin::posts.can_not_create_post')]);
+            return redirect(route('admin::posts.index'))->with(['flash.message' => trans('admin::posts.can_not_create_post')]);
         }
     }
 
@@ -112,7 +112,7 @@ class PostsController extends Controller
         if($gate->allows('destroy-posts')){
             $post = $this->postRepo->find($id);
             $post->delete();
-            return redirect(route('admin::dashboard.posts.index'))->with('flash.message', trans('admin::posts.post_deleted'));;
+            return redirect(route('admin::posts.index'))->with('flash.message', trans('admin::posts.post_deleted'));;
         }
     }
 }

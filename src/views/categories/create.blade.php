@@ -1,7 +1,7 @@
 @extends('admin::layout.master')
 
 @section('content')
-<form action="{{ route('admin::dashboard.categories.store') }}" method="post" class="form">
+<form action="{{ route('admin::categories.store') }}" method="post" class="form">
 {{ csrf_field() }}
 <input
     type="text"

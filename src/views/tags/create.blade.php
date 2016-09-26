@@ -1,7 +1,7 @@
 @extends('admin::layout.master')
 
 @section('content')
-<form action="{{ route('admin::dashboard.tags.store') }}" method="post" class="form">
+<form action="{{ route('admin::tags.store') }}" method="post" class="form">
 {{ csrf_field() }}
 <input
     type="text"

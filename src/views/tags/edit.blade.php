@@ -1,7 +1,7 @@
 @extends('admin::layout.master')
 
 @section('content')
-<form action="{{ route('admin::dashboard.tags.update', ["tags" => $tag->id]) }}" method="post" class="form">
+<form action="{{ route('admin::tags.update', ["tags" => $tag->id]) }}" method="post" class="form">
 {{ csrf_field() }}
 <input type="hidden" name="_method" value="PUT">
 <input

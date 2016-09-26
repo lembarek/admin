@@ -5,6 +5,6 @@
 @stop
 
 @section('content')
-    @include('admin::dashboard.partials/'.$page)
+    @include('admin::partials/'.$page)
 @stop
 

@@ -6,28 +6,28 @@ orderBy:
 <div class="btn-group">
     <a
      class="btn btn-primary"
-     href="{{ routeWithOrderBy('admin::dashboard.posts.index', 'id', $direction) }}"
+     href="{{ routeWithOrderBy('admin::posts.index', 'id', $direction) }}"
     >
      {{ trans('admin::posts.id') }}
     </a>
 
     <a
      class="btn btn-primary"
-     href="{{ routeWithOrderBy('admin::dashboard.posts.index', 'title', $direction) }}"
+     href="{{ routeWithOrderBy('admin::posts.index', 'title', $direction) }}"
     >
      {{ trans('admin::posts.title') }}
     </a>
 
     <a
      class="btn btn-primary"
-     href="{{ routeWithOrderBy('admin::dashboard.posts.index', 'author', $direction) }}"
+     href="{{ routeWithOrderBy('admin::posts.index', 'author', $direction) }}"
     >
      {{ trans('admin::posts.author') }}
     </a>
 
     <a
      class="btn btn-primary"
-     href="{{ routeWithOrderBy('admin::dashboard.posts.index', 'active', $direction) }}"
+     href="{{ routeWithOrderBy('admin::posts.index', 'active', $direction) }}"
     >
      {{ trans('admin::posts.active') }}
     </a>
@@ -37,7 +37,7 @@ orderBy:
 
 @can('create-posts')
 <a
-    href="{{route('admin::dashboard.posts.create')}}"
+    href="{{route('admin::posts.create')}}"
     class="btn btn-primary pull-right"
 >
     {{trans('admin::posts.new_post')}}
@@ -52,7 +52,7 @@ orderBy:
     @can('edit-posts')
         @foreach($posts as $post)
         <li>
-                <a href="{{route('admin::dashboard.posts.edit', ['id' => $post->id])}}">{{ $post['title'] }}</a>
+                <a href="{{route('admin::posts.edit', ['id' => $post->id])}}">{{ $post['title'] }}</a>
         </li>
         @endforeach
     @else

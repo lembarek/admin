@@ -4,7 +4,7 @@
 
 
 <a
-    href="{{route('admin::dashboard.tags.create')}}"
+    href="{{route('admin::tags.create')}}"
     class="btn btn-primary pull-right"
 >
     {{trans('blog::tag.new_tag')}}
@@ -17,50 +17,50 @@
         <tr>
             <th>
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'id', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::tags.index', 'id', $direction) }}">
                     {{ trans('admin::tag.id') }}
                 </a>
             </th>
 
             <th>
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'name', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::tags.index', 'name', $direction) }}">
                     {{ trans('blog::tag.name') }}
                 </a>
             </th>
             <th>
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'title', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::tags.index', 'title', $direction) }}">
                     {{ trans('blog::tag.title') }}
                 </a>
             </th>
             <th class="hidden-sm">
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'subtitle', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::tags.index', 'subtitle', $direction) }}">
                     {{ trans('blog::tag.subtitle') }}
                 </a>
             </th>
             <th class="hidden-md">
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'page_image', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::tags.index', 'page_image', $direction) }}">
                     {{ trans('blog::tag.page_image') }}
                 </a>
             </th>
             <th class="hidden-md">
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'meta_description', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::tags.index', 'meta_description', $direction) }}">
                     {{ trans('blog::tag.meta_description') }}
                 </a>
             </th>
             <th class="hidden-md">
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'layout', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::tags.index', 'layout', $direction) }}">
                     {{ trans('blog::tag.layout') }}
                 </a>
             </th>
             <th class="hidden-sm">
                 <a
-                    href="{{ routeWithOrderBy('admin::dashboard.tags.index', 'direction', $direction) }}">
+                    href="{{ routeWithOrderBy('admin::tags.index', 'direction', $direction) }}">
                     {{ trans('blog::tag.direction') }}
                 </a>
             </th>
@@ -89,7 +89,7 @@
                 @endif
               </td>
               <td>
-                  <a href="{{ route('admin::dashboard.tags.edit', ['tags' => $tag->id]) }}">
+                  <a href="{{ route('admin::tags.edit', ['tags' => $tag->id]) }}">
                       <span class="glyphicon glyphicon-pencil" ></span>
                   </a>
                   @include('admin::tags.partials.delete')

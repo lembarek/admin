@@ -7,7 +7,7 @@
         @can('edit-users')
         <div class="col-md-6 col-md-push-2">
         <h1>{{ $user->username }} </h1>
-        <form action="{{ route('admin::dashboard.users.update', ['username' => $user->username]) }}" method="post">
+        <form action="{{ route('admin::users.update', ['username' => $user->username]) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="_method" value="PUT">
             @foreach($user->profile->toArray() as $key => $value)

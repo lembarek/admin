@@ -58,7 +58,7 @@ class UsersController extends Controller
         if(auth()->user()->isSuperiorThen($user))
             $user->delete();
 
-        return redirect()->route('admin::dashboard.users.index');
+        return redirect()->route('admin::users.index');
     }
 
     /**
@@ -80,11 +80,11 @@ class UsersController extends Controller
     {
        if($gate->allows('create-users')){
             $this->userRepo->create($request->all());
-            return redirect()->route('admin::dashboard.users.index');
+            return redirect()->route('admin::users.index');
         }
 
        return redirect()
-              ->route('admin::dashboard')
+              ->route('admin::)
               ->with('flash.message', trans('admin::users.can_not_create_user'));
     }
 
@@ -113,7 +113,7 @@ class UsersController extends Controller
             return back();
         }
         return redirect()
-            ->route('admin::dashboard')
+            ->route('admin::)
             ->with('flash.message', trans('admin::users.can_not_create_user'));
     }
 }
