@@ -49,7 +49,7 @@
 <form action="{{ route('admin::posts.update', ['id' => $post->id]) }}" method="post">
     <input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <input type="hidden" value="{{ ! $post['active'] }}" name="active">
+    <input type="hidden" value="{{  $post->active? 0:1 }}" name="active">
     <button type="submit" class="btn btn-primary">{{ $post['active'] ? trans('admin::posts.suspend'): trans('admin::posts.publish') }}</button>
 </form>
 

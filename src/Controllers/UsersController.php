@@ -84,7 +84,7 @@ class UsersController extends Controller
         }
 
        return redirect()
-              ->route('admin::)
+              ->route('admin::dashboard')
               ->with('flash.message', trans('admin::users.can_not_create_user'));
     }
 
@@ -113,7 +113,7 @@ class UsersController extends Controller
             return back();
         }
         return redirect()
-            ->route('admin::)
+            ->route('admin::dashboard')
             ->with('flash.message', trans('admin::users.can_not_create_user'));
     }
 }

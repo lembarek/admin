@@ -14,6 +14,6 @@ class DashboardController extends Controller
      */
     public function index($page="dashboard")
     {
-        return view('admin::index', compact('page'));
+        return view('admin::dashboard.index', compact('page'));
     }
 }
