@@ -23,8 +23,8 @@ class CreateCategoryPostRequest extends Request
     public function rules()
     {
         return [
-            'category_id' => 'required|integer',
-            'post_id' => 'required|integer',
+            'category_id' => 'required|integer|exists:categories,id',
+            'post_id' => 'required|integer|exists:posts,id',
         ];
     }
 
