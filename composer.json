@@ -20,7 +20,7 @@
         "lembarek/core" : "dev-master",
         "lembarek/auth" : "dev-master",
         "lembarek/role" : "dev-master",
-        "lembarek/uploadManager" : "dev-master"
+        "lembarek/upload-manager" : "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit" : "4.*",
