@@ -57,7 +57,12 @@
 </div>
 
 @include('admin::posts.partials.categories')
+
+
 </div>
+
+@include('admin::posts.partials.relateds')
+
 @else
     <p>{{ trans('admin::can_not_update_posts') }}</p>
 @endcan
