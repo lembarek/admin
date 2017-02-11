@@ -30,7 +30,10 @@
     "autoload": {
         "psr-4": {
             "Lembarek\\Admin\\": "src"
-        }
+        },
+        "files": [
+          "src/testing/helpers.php"
+        ]
     },
     "scripts": {
         "test": "phpunit"
