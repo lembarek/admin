@@ -51,7 +51,12 @@ class PostsController extends Controller
     public function store(CreatePostRequest $request, Gate $gate)
     {
         if($gate->allows('create-posts')){
-            $this->postRepo->create($request->except('_token'));
+            $posts_ids = explode(';', $request->get('related_posts'));
+            $post = $this->postRepo->create($request->except('_token', 'reladed_posts'));
+            foreach($posts_ids as $post_id){
+                if($post_id)
+                    $post->addRelated($post_id);
+            }
             return redirect(route('admin::posts.index'))->with(['flash.message' => trans('admin::posts.post_created')]);
         }else{
             return redirect(route('admin::posts.index'))->with(['flash.message' => trans('admin::posts.can_not_create_post')]);

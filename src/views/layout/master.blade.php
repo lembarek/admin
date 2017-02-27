@@ -8,6 +8,8 @@
 
  <body>
 
+     <div id="app">
+
         @include('admin::layout.partials.nav')
 
 
@@ -25,6 +27,8 @@
         @include('admin::layout.partials.footer')
 
         @yield('scripts')
+
+     </div>
 
  </body>
 </html>

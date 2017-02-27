@@ -26,6 +26,7 @@ class CreatePostRequest extends Request
         'description' => 'required',
         'body' => 'required',
         'published_at' => 'required|date',
+        'related_posts' => '',
     ];
     }
 

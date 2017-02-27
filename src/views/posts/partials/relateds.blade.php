@@ -1,3 +1,3 @@
 @foreach($post->relateds as $p)
-{{ $p->title }}
+<li>{{ $p->title }}</li>
 @endforeach
