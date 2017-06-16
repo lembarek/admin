@@ -1,2 +1,2 @@
 require('./sidebar.js');
-require('./components.js');
+require('./components');
