@@ -28,6 +28,8 @@
         </div>
     </div>
 
+     <edit-related-posts></edit-related-posts>
+
      <div class="col-md-9 ">
         <button type="submit" class="btn btn-primary pull-right">{{ trans('admin::posts.update') }}</button>
     </div>
@@ -55,13 +57,9 @@
 
 <a href="{{ route('admin::posts.show', ['slug' => $post->slug])  }}" class="btn btn-warning">{{ trans('admin::posts.preview') }}</a>
 </div>
-
 @include('admin::posts.partials.categories')
-
-
 </div>
 
-@include('admin::posts.partials.relateds')
 
 @else
     <p>{{ trans('admin::can_not_update_posts') }}</p>
