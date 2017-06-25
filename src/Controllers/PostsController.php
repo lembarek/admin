@@ -51,13 +51,9 @@ class PostsController extends Controller
     public function store(CreatePostRequest $request, Gate $gate)
     {
         if($gate->allows('create-posts')){
-            $posts_ids = explode(';', $request->get('related_posts'));
-            $post = $this->postRepo->create($request->except('_token', 'reladed_posts'));
-            foreach($posts_ids as $post_id){
-                if($post_id)
-                    $post->addRelated($post_id);
-            }
-            return redirect(route('admin::posts.index'))->with(['flash.message' => trans('admin::posts.post_created')]);
+                $post = $this->postRepo->create($request->except('_token', 'reladed_posts'));
+                $this->add_related_posts($post, $request->get('related_posts'));
+                return redirect(route('admin::posts.index'))->with(['flash.message' => trans('admin::posts.post_created')]);
         }else{
             return redirect(route('admin::posts.index'))->with(['flash.message' => trans('admin::posts.can_not_create_post')]);
         }
@@ -98,7 +94,8 @@ class PostsController extends Controller
     {
         if($gate->allows('edit-posts')){
             $post = $this->postRepo->find($id);
-            $post->update($request->except('_method', '_token'));
+            $this->add_related_posts($post, $request->get('related_posts'));
+            $post->update($request->except('_method', '_token', 'related_posts'));
             return back()->with('flash.message', 'admin::posts.posts_updated');
         }else{
             return back()->with('flash.message', 'admin::posts.can_not_update_posts');
@@ -119,5 +116,21 @@ class PostsController extends Controller
             $post->delete();
             return redirect(route('admin::posts.index'))->with('flash.message', trans('admin::posts.post_deleted'));;
         }
+    }
+
+    /**
+     * add related posts
+     *
+     * @param Post     $post
+     * @param  string  $posts
+     * @return void
+     */
+    public function add_related_posts($post, $posts)
+    {
+        $posts_ids = explode(';', $posts);
+        $posts_ids = array_map(function($id){
+          return (int)$id;
+        }, $posts_ids);
+        $post->relateds()->sync($posts_ids);
     }
 }
